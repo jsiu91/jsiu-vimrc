@@ -1,6 +1,7 @@
 "### pluginColors ###
 colorscheme badwolf
 syntax enable
+set background=dark
 
 "### Spaces & Tabs ###
 set tabstop=4
@@ -33,10 +34,10 @@ noremap j gj
 nnoremap k gk
 
 "<-- Arrow Keys -->
-no <down> ddp
-no <up> ddkP
-no <left> <Nop>
-no <right> <Nop>
+"no <down> ddp
+"no <up> ddkP
+"no <left> <Nop>
+"no <right> <Nop>
 
 "<-- Beginning and End of Line -->
 nnoremap E $
@@ -51,9 +52,20 @@ imap <leader>' ''<esc>i
 imap <leader>" ""<esc>i
 imap <leader>( ()<esc>i
 imap <leader>[ []<esc>i
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
 
 "<-- Ag mode -->
 nnoremap <leader>a :Ag
+
+"<-- Compile and execute -->
+imap <F5> <Esc>:w<CR>:!clear;python3 %<CR>
+nmap <F5> <CR>:!clear;python3 %<CR>
 
 "### Tag Jumping ###
 command! MakeTags !ctags -R
@@ -102,3 +114,4 @@ let g:LatexBox_latexmk_options = "-xelatex --disable-write18 --file-line-error -
 
 noremap =- :Latexmk <enter>
 noremap ';  :LatexView <enter>
+
